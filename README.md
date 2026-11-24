@@ -1,10 +1,10 @@
-# polis (working name)
+# Shahrvand
 
 A free, open-source, bilingual (English and Persian) site that teaches
 political literacy: how politics works, the ideas and vocabulary behind it,
 and how to read political news critically.
 
-Status: just started. No content or site yet; the structure is proposed in the
+Shahrvand (شهروند) means "citizen". Status: just started. No content or site yet; the structure is proposed in the
 issues.
 
 ## How it will read
