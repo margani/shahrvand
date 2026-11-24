@@ -39,6 +39,8 @@ for (const p of pages) {
   check(listed.has(slug), `${p}: not listed in _coverage.md`)
 }
 
+const names = new Set(pages.map((p) => p.split("/").pop().replace(/\.md$/, "")))
+
 function page(file) {
   const text = readFileSync(join(root, file), "utf8")
   const fm = /^---\n([\s\S]*?)\n---\n/.exec(text)
@@ -58,8 +60,12 @@ function page(file) {
   for (const m of body.matchAll(/\]\(([^)\s]+)\)/g)) {
     const href = m[1].split("#")[0]
     if (!href || /^(https?:|mailto:)/.test(href)) continue
+    // markdownLinkResolution is "shortest": a bare name finds the page in any folder.
+    const bare = !href.includes("/") ? href.replace(/\.md$/, "") : null
     const base = resolve(root, dirname(file), href)
-    const ok = [base + (fa ? ".fa" : "") + ".md", base + ".md"].some(existsSync)
+    const ok = bare
+      ? names.has(bare + (fa ? ".fa" : "")) || names.has(bare)
+      : [base + (fa ? ".fa" : "") + ".md", base + ".md"].some(existsSync)
     check(ok, `${file}: broken link (${m[1]})`)
   }
   return heads

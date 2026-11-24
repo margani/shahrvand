@@ -21,18 +21,18 @@ How it works, Contested points, Examples, Sources, Further reading. Frontmatter:
 - [x] foundations/liberalism: Liberalism / لیبرالیسم
 - [x] foundations/conservatism: Conservatism / محافظه‌کاری
 - [x] foundations/socialism-and-social-democracy: Socialism and social democracy / سوسیالیسم و سوسیال‌دموکراسی
-- [ ] foundations/nation-and-nationalism: Nation and nationalism / ملت و ناسیونالیسم
-- [ ] foundations/populism: Populism / پوپولیسم
-- [ ] foundations/authoritarianism-and-totalitarianism: Authoritarianism and totalitarianism / اقتدارگرایی و توتالیتاریسم
-- [ ] foundations/anarchism: Anarchism / آنارشیسم
-- [ ] foundations/fascism: Fascism / فاشیسم
-- [ ] foundations/feminism-and-politics: Feminism and politics / فمینیسم و سیاست
-- [ ] foundations/environmentalism: Political environmentalism / محیط‌زیست‌گرایی سیاسی
-- [ ] foundations/religion-and-politics: Religion and politics / دین و سیاست
-- [ ] foundations/secularism: Secularism / سکولاریسم
-- [ ] foundations/left-and-right: Left and right / چپ و راست
-- [ ] foundations/political-culture: Political culture / فرهنگ سیاسی
-- [ ] foundations/political-theory-classics: Classic political thinkers / متفکران کلاسیک سیاست
+- [x] foundations/nation-and-nationalism: Nation and nationalism / ملت و ناسیونالیسم
+- [x] foundations/populism: Populism / پوپولیسم
+- [x] foundations/authoritarianism-and-totalitarianism: Authoritarianism and totalitarianism / اقتدارگرایی و توتالیتاریسم
+- [x] foundations/anarchism: Anarchism / آنارشیسم
+- [x] foundations/fascism: Fascism / فاشیسم
+- [x] foundations/feminism-and-politics: Feminism and politics / فمینیسم و سیاست
+- [x] foundations/environmentalism: Political environmentalism / محیط‌زیست‌گرایی سیاسی
+- [x] foundations/religion-and-politics: Religion and politics / دین و سیاست
+- [x] foundations/secularism: Secularism / سکولاریسم
+- [x] foundations/left-and-right: Left and right / چپ و راست
+- [x] foundations/political-culture: Political culture / فرهنگ سیاسی
+- [x] foundations/political-theory-classics: Classic political thinkers / متفکران کلاسیک سیاست
 
 ## institutions
 
@@ -44,44 +44,44 @@ How it works, Contested points, Examples, Sources, Further reading. Frontmatter:
 - [x] institutions/political-parties: Political parties / احزاب سیاسی
 - [x] institutions/party-systems: Party systems / نظام‌های حزبی
 - [x] institutions/political-regimes: Political regimes / رژیم‌های سیاسی
-- [ ] institutions/presidential-and-parliamentary-systems: Presidential and parliamentary systems / نظام‌های ریاستی و پارلمانی
-- [ ] institutions/federalism-and-unitary-states: Federalism and unitary states / فدرالیسم و دولت‌های یکپارچه
-- [ ] institutions/local-government: Local government and decentralisation / حکومت محلی و تمرکززدایی
-- [ ] institutions/bureaucracy: Bureaucracy and the civil service / دیوان‌سالاری و خدمات کشوری
-- [ ] institutions/military-and-politics: The military and politics / ارتش و سیاست
-- [ ] institutions/interest-groups-and-lobbying: Interest groups and lobbying / گروه‌های ذی‌نفع و لابی‌گری
-- [ ] institutions/referendums-and-direct-democracy: Referendums and direct democracy / همه‌پرسی و دموکراسی مستقیم
-- [ ] institutions/public-budget-and-taxes: Public budgets and taxes / بودجهٔ عمومی و مالیات
-- [ ] institutions/corruption-and-accountability: Corruption and accountability / فساد و پاسخ‌گویی
+- [x] institutions/presidential-and-parliamentary-systems: Presidential and parliamentary systems / نظام‌های ریاستی و پارلمانی
+- [x] institutions/federalism-and-unitary-states: Federalism and unitary states / فدرالیسم و دولت‌های یکپارچه
+- [x] institutions/local-government: Local government and decentralisation / حکومت محلی و تمرکززدایی
+- [x] institutions/bureaucracy: Bureaucracy and the civil service / دیوان‌سالاری و خدمات کشوری
+- [x] institutions/military-and-politics: The military and politics / ارتش و سیاست
+- [x] institutions/interest-groups-and-lobbying: Interest groups and lobbying / گروه‌های ذی‌نفع و لابی‌گری
+- [x] institutions/referendums-and-direct-democracy: Referendums and direct democracy / همه‌پرسی و دموکراسی مستقیم
+- [x] institutions/public-budget-and-taxes: Public budgets and taxes / بودجهٔ عمومی و مالیات
+- [x] institutions/corruption-and-accountability: Corruption and accountability / فساد و پاسخ‌گویی
 
 ## rights
 
 - [x] rights/rights-and-rule-of-law: Rights and the rule of law / حقوق و حاکمیت قانون
-- [ ] rights/human-rights-law: Human rights and international law / حقوق بشر و حقوق بین‌الملل
-- [ ] rights/freedom-of-expression: Freedom of expression / آزادی بیان
-- [ ] rights/minority-rights: Minority rights / حقوق اقلیت‌ها
-- [ ] rights/gender-equality-and-law: Gender equality and the law / برابری جنسیتی و قانون
-- [ ] rights/citizenship: Citizenship / شهروندی
-- [ ] rights/protest-and-civil-disobedience: Protest and civil disobedience / اعتراض و نافرمانی مدنی
-- [ ] rights/privacy-and-surveillance: Privacy and surveillance / حریم خصوصی و نظارت
+- [x] rights/human-rights-law: Human rights and international law / حقوق بشر و حقوق بین‌الملل
+- [x] rights/freedom-of-expression: Freedom of expression / آزادی بیان
+- [x] rights/minority-rights: Minority rights / حقوق اقلیت‌ها
+- [x] rights/gender-equality-and-law: Gender equality and the law / برابری جنسیتی و قانون
+- [x] rights/citizenship: Citizenship / شهروندی
+- [x] rights/protest-and-civil-disobedience: Protest and civil disobedience / اعتراض و نافرمانی مدنی
+- [x] rights/privacy-and-surveillance: Privacy and surveillance / حریم خصوصی و نظارت
 
 ## media
 
-- [ ] media/how-news-is-made: How news is made / خبر چگونه ساخته می‌شود
-- [ ] media/fact-and-opinion: Fact, opinion and analysis / واقعیت، نظر و تحلیل
-- [ ] media/evaluating-sources: Evaluating sources / ارزیابی منابع
-- [ ] media/bias-and-framing: Bias and framing / سوگیری و چارچوب‌بندی
-- [ ] media/propaganda-and-disinformation: Propaganda and disinformation / پروپاگاندا و اطلاعات نادرست
-- [ ] media/reading-polls-and-statistics: Reading polls and statistics / خواندن نظرسنجی‌ها و آمار
-- [ ] media/social-media-and-politics: Social media and politics / شبکه‌های اجتماعی و سیاست
-- [ ] media/press-freedom: Press freedom and censorship / آزادی مطبوعات و سانسور
-- [ ] media/reading-a-political-speech: Reading a political speech / خواندن یک سخنرانی سیاسی
+- [x] media/how-news-is-made: How news is made / خبر چگونه ساخته می‌شود
+- [x] media/fact-and-opinion: Fact, opinion and analysis / واقعیت، نظر و تحلیل
+- [x] media/evaluating-sources: Evaluating sources / ارزیابی منابع
+- [x] media/bias-and-framing: Bias and framing / سوگیری و چارچوب‌بندی
+- [x] media/propaganda-and-disinformation: Propaganda and disinformation / پروپاگاندا و اطلاعات نادرست
+- [x] media/reading-polls-and-statistics: Reading polls and statistics / خواندن نظرسنجی‌ها و آمار
+- [x] media/social-media-and-politics: Social media and politics / شبکه‌های اجتماعی و سیاست
+- [x] media/press-freedom: Press freedom and censorship / آزادی مطبوعات و سانسور
+- [x] media/reading-a-political-speech: Reading a political speech / خواندن یک سخنرانی سیاسی
 
 ## economy
 
-- [ ] economy/political-economy: Political economy / اقتصاد سیاسی
-- [ ] economy/capitalism-and-markets: Capitalism and markets / سرمایه‌داری و بازار
-- [ ] economy/welfare-state: The welfare state / دولت رفاه
+- [x] economy/political-economy: Political economy / اقتصاد سیاسی
+- [x] economy/capitalism-and-markets: Capitalism and markets / سرمایه‌داری و بازار
+- [x] economy/welfare-state: The welfare state / دولت رفاه
 - [ ] economy/inequality: Inequality / نابرابری
 - [ ] economy/inflation-and-unemployment: Inflation, unemployment and politics / تورم، بیکاری و سیاست
 - [ ] economy/globalisation-and-trade: Globalisation and trade / جهانی‌شدن و تجارت
