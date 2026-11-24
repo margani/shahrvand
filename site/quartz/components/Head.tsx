@@ -42,6 +42,14 @@ export default (() => {
     return (
       <head>
         <title>{title}</title>
+        {/* If the reader saved a language that differs from this page, hide the page until lang.js has
+            moved to the twin, so the wrong language never flashes. A timer lifts it if the script fails. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var l=localStorage.getItem("shahrvand.lang");var f=/\\.fa\\/?$/.test(location.pathname)||/^\\/index\\.fa/.test(location.pathname);if((l==="fa"&&!f)||(l==="en"&&f)){document.documentElement.classList.add("lang-pending");setTimeout(function(){document.documentElement.classList.remove("lang-pending")},2500)}}catch(e){}`,
+          }}
+        />
+        <style dangerouslySetInnerHTML={{ __html: "html.lang-pending body{visibility:hidden}" }} />
         <meta charSet="utf-8" />
         {coreStylesheet && <link rel="preload" href={coreStylesheet} as="style" />}
         {coreScript && coreScript.contentType === "external" && (

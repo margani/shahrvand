@@ -414,3 +414,73 @@ html.ps-reader {
 
 // Sign in / Sign out link, added to the footer by personal.js.
 .ps-auth { display: inline-block; margin-top: 0.5rem; font-size: 0.85rem; }
+
+// Site-wide language switch (quartz/static/lang.js), next to the dark-mode button.
+.ps-sitelang {
+  cursor: pointer;
+  height: 2rem;
+  min-width: 2.4rem;
+  padding: 0 0.5rem;
+  margin-inline-start: 0.4rem;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  background: var(--light);
+  color: var(--darkgray);
+  &:hover {
+    border-color: var(--secondary);
+  }
+}
+
+// The row is already full at 390px; a smaller switch keeps the page from scrolling sideways.
+@media (max-width: 800px) {
+  .ps-sitelang {
+    height: 1.8rem;
+    min-width: 0;
+    padding: 0 0.35rem;
+    margin-inline-start: 0.1rem;
+    font-size: 0.75rem;
+  }
+}
+// The meta row is forced left-to-right for English text; on a Persian page that scrambles the Persian
+// date and reading time ("۲۰۲۶,۴ ... ۲۴"), so it follows the page direction there.
+html[lang="fa"] .popover-hint .content-meta,
+html[lang="fa"] .content-meta { direction: rtl; unicode-bidi: isolate; }
+
+// Persian reads right to left, so the whole page frame is mirrored: the grid columns follow the
+// direction (Explorer on the right, graph/ToC on the left) and the header row flips with it.
+html[lang="fa"] #quartz-body { direction: rtl; }
+// The Explorer's nesting line, indent and chevron spacing are written for left-to-right.
+html[lang="fa"] .explorer-content .folder-outer > ul {
+  margin-left: 0;
+  margin-right: 6px;
+  padding-left: 0;
+  padding-right: 0.8rem;
+  border-left: 0;
+  border-right: 1px solid var(--lightgray);
+}
+html[lang="fa"] .folder-icon { margin-right: 0; margin-left: 5px; }
+html[lang="fa"] .explorer .fold { margin-left: 0; margin-right: 0.5rem; }
+
+// Sign-in dialog (quartz/static/personal.js).
+.ps-dialog-bg {
+  position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 0, 0, 0.45); padding: 1rem;
+}
+.ps-dialog {
+  background: var(--light); color: var(--darkgray); border: 1px solid var(--lightgray); border-radius: 10px;
+  padding: 1.2rem; width: min(24rem, 100%); display: flex; flex-direction: column; gap: 0.7rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  p { margin: 0; }
+  .ps-dialog-small { font-size: 0.85rem; opacity: 0.8; }
+  .ps-dialog-err { color: #c0392b; font-size: 0.9rem; min-height: 1.2em; }
+  .ps-go { font-weight: 600; }
+}
+.ps-input {
+  font: inherit; font-size: 1rem; padding: 0.55rem 0.7rem; border: 1px solid var(--gray); border-radius: 6px;
+  background: var(--light); color: var(--dark); width: 100%; box-sizing: border-box;
+  &:focus { outline: 2px solid var(--secondary); }
+}
+.ps-who { opacity: 0.8; }

@@ -8,7 +8,23 @@
   "workers_dev": false,
   "preview_urls": false,
   "routes": [{ "pattern": "shahrvand.whosane.dev", "custom_domain": true }],
+  // Pages are static assets; only /api/* and /auth/* run the Worker (reader accounts in D1).
+  "main": "worker/index.ts",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "shahrvand",
+      "database_id": "447c9436-5922-4629-bae3-433850b31024",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // Sign-in codes are emailed through Cloudflare Email Sending; mail.whosane.dev is already onboarded.
+  // Secret (never in this file): CODE_KEY, the key for the code hash (wrangler secret put CODE_KEY).
+  "send_email": [{ "name": "EMAIL" }],
+  "vars": { "MAIL_FROM": "shahrvand@mail.whosane.dev" },
   "assets": {
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/auth/*"],
     "directory": "./public",
     "not_found_handling": "404-page",
     "html_handling": "drop-trailing-slash"

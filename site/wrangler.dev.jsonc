@@ -1,0 +1,31 @@
+{
+  // DEV ONLY copy of wrangler.jsonc: no route, sign-in codes returned in the response. Never deploy this file.
+  // Static site on Workers static assets: the Quartz build of ../content (set up by `npm run build:site`).
+  // The custom domain is attached here so wrangler creates the DNS record itself.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "shahrvand",
+  "account_id": "cbaf7c8b254ee4af435b9d6e32d2c6f1",
+  "compatibility_date": "2026-09-30",
+  "workers_dev": false,
+  "preview_urls": false,
+  // Pages are static assets; only /api/* and /auth/* run the Worker (reader accounts in D1).
+  "main": "worker/index.ts",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "shahrvand",
+      "database_id": "447c9436-5922-4629-bae3-433850b31024",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // Sign-in codes are emailed through Cloudflare Email Sending; mail.whosane.dev is already onboarded.
+  // Secret (never in this file): CODE_KEY, the key for the code hash (wrangler secret put CODE_KEY).
+  "vars": { "MAIL_FROM": "shahrvand@mail.whosane.dev", "DEV_RETURN_CODE": "1", "CODE_KEY": "local-test-key-not-a-secret" },
+  "assets": {
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/auth/*"],
+    "directory": "./public",
+    "not_found_handling": "404-page",
+    "html_handling": "drop-trailing-slash"
+  }
+}
