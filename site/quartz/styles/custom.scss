@@ -1,0 +1,416 @@
+@use "./variables.scss" as *;
+
+// put your custom CSS here!
+
+// Direction comes from `dir="auto"` set per block in components/Body.tsx. Left
+// alignment must follow that direction instead of the page's fixed one.
+article {
+  p,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  blockquote,
+  td,
+  th,
+  summary,
+  .callout-title-inner {
+    text-align: start;
+  }
+}
+
+// The page title above the body already shows the first heading; keeping both printed it twice.
+.markdown-rendered > h1:first-child {
+  display: none;
+}
+
+// Date and reading time sit at the end of the title row (as in the owner's reference), not under it.
+.page-header > .popover-hint {
+  display: grid;
+  // Title | date and reading time | Read and Favorite buttons, all on the title row.
+  grid-template-columns: 1fr auto auto auto;
+  column-gap: 1rem;
+  align-items: end;
+
+  > .breadcrumb-container {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  > .article-title {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  > .content-meta {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0 0 0.4rem;
+    white-space: nowrap;
+  }
+
+  > .ps-lang {
+    grid-column: 3;
+    grid-row: 2;
+    margin: 0 0 0.25rem;
+  }
+
+  > .ps-bar {
+    grid-column: 4;
+    grid-row: 2;
+    margin: 0 0 0.25rem;
+  }
+
+  // Everything after the header row (the article body) takes its own full-width rows.
+  > :not(.breadcrumb-container, .article-title, .content-meta, .ps-lang, .ps-bar) {
+    grid-column: 1 / -1;
+  }
+}
+@media all and (max-width: 800px) {
+  // Phone: the title and the date each get a full row; the language switch and the Read and
+  // Favorite buttons share the next one (all three on one row overflowed on the Persian page,
+  // where the switch reads "English").
+  .page-header > .popover-hint {
+    grid-template-columns: 1fr auto;
+    > .article-title {
+      grid-column: 1 / -1;
+    }
+    > .content-meta {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      margin: 0.2rem 0 0.4rem;
+    }
+    > .ps-lang {
+      grid-column: 1;
+      grid-row: 4;
+      justify-self: start;
+      margin: 0;
+    }
+    > .ps-bar {
+      grid-column: 2;
+      grid-row: 4;
+      margin: 0;
+    }
+    // No twin, so no switch: the buttons go back beside the date.
+    &:not(:has(> .ps-lang)) {
+      > .content-meta {
+        grid-column: 1;
+        margin: 0.2rem 0 0;
+      }
+      > .ps-bar {
+        grid-row: 3;
+        margin: 0.2rem 0 0;
+      }
+    }
+  }
+}
+
+// Learning-path panel (quartz/components/learningPaths.ts)
+.learning-paths {
+  margin-bottom: 1rem;
+
+  .lp-heading {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+  }
+
+  .lp-card {
+    border: 1px solid var(--lightgray);
+    border-radius: 6px;
+    padding: 0.5rem 0.6rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .lp-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .lp-pos {
+    color: var(--gray);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .lp-nav {
+    display: flex;
+    gap: 0.4rem;
+    margin: 0.5rem 0;
+
+    a {
+      flex: 1;
+      background: var(--highlight);
+      border-radius: 4px;
+      padding: 0.2rem 0.4rem;
+      line-height: 1.3;
+    }
+
+    .lp-next {
+      text-align: end;
+      margin-inline-start: auto;
+    }
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--gray);
+  }
+
+  ol {
+    margin: 0.4rem 0 0;
+    padding-inline-start: 1.4rem;
+  }
+
+  li.current {
+    font-weight: 700;
+    color: var(--tertiary);
+  }
+}
+
+/* Personal state (static/personal.js): read marks, favorites, highlights, notes. */
+.ps-bar { display: flex; gap: 0.5rem; margin: 0 0 0.75rem; }
+.ps-bar .ps-btn { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; padding: 0; }
+.ps-bar .ps-fav-btn.on svg { fill: currentColor; }
+.ps-btn {
+  font: inherit; font-size: 0.85rem; padding: 0.25rem 0.7rem; cursor: pointer;
+  border: 1px solid var(--lightgray); border-radius: 6px;
+  background: var(--light); color: var(--darkgray);
+  &:hover { border-color: var(--secondary); }
+  &.on { background: var(--secondary); border-color: var(--secondary); color: var(--light); }
+  &.danger { color: #c0392b; }
+  &.small { font-size: 0.75rem; padding: 0.1rem 0.5rem; }
+}
+a.ps-read:not(.lp-title)::after { content: " \2713"; color: #2e9e5b; font-size: 0.85em; }
+a.ps-fav:not(.lp-title)::before { content: "\2605 "; color: #d99a00; font-size: 0.85em; }
+.ps-panel { margin: 0 0 1rem; }
+.ps-panel ul { list-style: none; padding: 0; margin: 0; }
+.ps-panel li { margin: 0.2rem 0; }
+mark.ps-mark {
+  color: inherit; border-radius: 2px; cursor: pointer;
+  &.ps-yellow { background: rgba(255, 213, 0, 0.35); }
+  &.ps-green { background: rgba(60, 200, 110, 0.32); }
+  &.ps-blue { background: rgba(70, 140, 255, 0.30); }
+  &.ps-pink { background: rgba(255, 90, 160, 0.30); }
+  &.has-note { border-bottom: 2px solid var(--secondary); }
+}
+.ps-pop {
+  position: absolute; z-index: 50; display: flex; flex-wrap: wrap; gap: 0.4rem; max-width: 18rem;
+  padding: 0.5rem; background: var(--light); border: 1px solid var(--lightgray);
+  border-radius: 8px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+.ps-text { width: 100%; font: inherit; font-size: 0.9rem; background: var(--light); color: var(--dark); border: 1px solid var(--lightgray); border-radius: 6px; padding: 0.3rem; }
+.ps-colors { display: flex; gap: 0.35rem; width: 100%; }
+.ps-dot {
+  width: 1.2rem; height: 1.2rem; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0;
+  &.on { border-color: var(--dark); }
+  &.ps-yellow { background: #ffd500; } &.ps-green { background: #3cc86e; }
+  &.ps-blue { background: #468cff; } &.ps-pink { background: #ff5aa0; }
+}
+.ps-lost { margin: 0 0 1rem; font-size: 0.9rem; blockquote { margin: 0.3rem 0; } }
+mark.ps-mark.ps-flash { outline: 3px solid var(--secondary); transition: outline-color 1s; }
+
+/* Global list of highlights and notes: a floating button and a side panel. */
+.ps-fab { position: fixed; right: 1rem; bottom: 1rem; z-index: 40; width: 2.8rem; height: 2.8rem; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25); }
+.ps-all {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 60; width: min(26rem, 100vw);
+  display: flex; flex-direction: column; background: var(--light);
+  border-left: 1px solid var(--lightgray); box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+}
+.ps-all-head { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1rem; border-bottom: 1px solid var(--lightgray); }
+.ps-icon { width: 2rem; height: 2rem; padding: 0; font-size: 1.2rem; line-height: 1; }
+.ps-tabs { display: flex; gap: 0.4rem; padding: 0.6rem 1rem; }
+.ps-all-body { overflow-y: auto; padding: 0 1rem 1.5rem; }
+.ps-group { margin: 0.8rem 0 1.2rem; }
+.ps-group-title { display: block; font-weight: 600; margin-bottom: 0.4rem; }
+a.ps-item {
+  display: block; margin: 0.35rem 0; padding: 0.45rem 0.6rem; border-radius: 6px; text-decoration: none;
+  background: var(--lightgray); color: var(--darkgray);
+  // The highlight colour as a small dot before the quote.
+  --ps-dot: #ffd500;
+  &.ps-b-green { --ps-dot: #3cc86e; }
+  &.ps-b-blue { --ps-dot: #468cff; }
+  &.ps-b-pink { --ps-dot: #ff5aa0; }
+  .ps-quote { display: block; font-size: 0.9rem; }
+  .ps-quote::before { content: ""; display: inline-block; width: 0.6rem; height: 0.6rem; margin-inline-end: 0.45rem; border-radius: 50%; background: var(--ps-dot); }
+  .ps-note { display: block; margin-top: 0.3rem; font-size: 0.85rem; color: var(--dark); font-weight: 600; }
+}
+
+// Footer version line and the update notice (quartz/static/offline.js).
+.ps-version {
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  color: var(--darkgray);
+  h3 { font-size: 1rem; margin: 0.6rem 0 0.3rem; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin: 0.15rem 0; opacity: 0.85; }
+  // On a phone the sidebar boxes sit in a row; a third column squeezed this one to a few words.
+  @media (max-width: 800px) { flex: 1 1 100%; }
+}
+.ps-update {
+  position: fixed;
+  inset-inline-start: 1rem;
+  inset-block-end: 1rem;
+  z-index: 60;
+  max-width: calc(100vw - 2rem);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--light);
+  color: var(--darkgray);
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  font-size: 0.95rem;
+
+  button {
+    font: inherit;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid var(--lightgray);
+    background: transparent;
+    color: inherit;
+    padding: 0.25rem 0.6rem;
+  }
+  .ps-update-go {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--light);
+    font-weight: 600;
+  }
+}
+
+// Persian pages mirror the header row (renderPage.tsx sets dir="rtl" on it). The date and reading
+// time are English text with a comma between them, so they stay left-to-right inside the row. The
+// breadcrumb arrow is a bidi-mirrored character: the browser already flips it, a CSS flip undoes that.
+.popover-hint[dir="rtl"] {
+  > .content-meta { direction: ltr; unicode-bidi: isolate; }
+}
+
+// Language switch on a topic page (quartz/static/lang.js): sized like the Read and Favorite buttons.
+.page-header a.ps-lang.internal {
+  display: inline-flex;
+  align-items: center;
+  height: 2.2rem;
+  padding: 0 0.8rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  background: var(--light);
+  color: var(--darkgray);
+  &:hover {
+    border-color: var(--secondary);
+  }
+}
+
+// A wide table (the Persian pages have long cells) pushed the whole page sideways on a phone;
+// it scrolls inside its own box instead.
+article table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+// Some Persian pages overflowed the phone by 2px (mixed-direction text and code inside the article
+// pushed the scrollable width past the viewport); clip the article box so the page never scrolls sideways.
+.markdown-preview-view {
+  overflow-x: clip;
+}
+
+// The title row (title, date, language switch, Read and Favorite) stays at the top while the page
+// scrolls. `top` is negative by the breadcrumb row's height (set by lang.js as --ps-stick), so the
+// breadcrumb scrolls away and the title row is what sticks, without the content jumping.
+// Phone: not sticky, three header rows would take a third of the screen.
+@media all and (min-width: 801px) {
+  .page-header {
+    position: sticky;
+    top: calc(var(--ps-stick, -2.4rem) + 0.9rem);
+    z-index: 20;
+    background: var(--light);
+    padding: 0.5rem 0 0.35rem;
+    box-shadow: 0 1px 0 var(--lightgray);
+
+    // The gap above the stuck row: a plain band, so text scrolling by does not show through it.
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -0.9rem;
+      height: 0.9rem;
+      background: var(--light);
+    }
+  }
+}
+
+// ---- Reader mode (static/reader.js) ----
+// Colours replace the site's variables only while the mode is on; "site" keeps the current light/dark.
+html.ps-reader[data-ps-theme="warm"] {
+  --light: #f4ecd8; --lightgray: #e3d6b6; --gray: #b3a587; --darkgray: #5a4636; --dark: #3a2d22;
+  --secondary: #8a5424; --tertiary: #b07a42; --highlight: rgba(138, 84, 36, 0.12); --textHighlight: #f0d98a88;
+}
+html.ps-reader[data-ps-theme="cool"] {
+  --light: #edf1f6; --lightgray: #d3dce8; --gray: #9aa7b8; --darkgray: #3c4959; --dark: #1e2935;
+  --secondary: #2c5d8c; --tertiary: #5b8bb8; --highlight: rgba(44, 93, 140, 0.10); --textHighlight: #a8c8f088;
+}
+html.ps-reader {
+  --ps-reader-w: 50rem;
+  &[data-ps-width="narrow"] { --ps-reader-w: 38rem; }
+  &[data-ps-width="wide"] { --ps-reader-w: 68rem; }
+  &[data-ps-width="full"] { --ps-reader-w: 100%; }
+
+  // Nothing but the topic: no sidebars, footer, breadcrumb or floating list buttons.
+  .sidebar, #quartz-body > footer, .breadcrumb-container, .ps-update, .ps-fab { display: none !important; }
+  .page { max-width: none; }
+  .page > #quartz-body {
+    display: block;
+    max-width: var(--ps-reader-w);
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 4rem;
+    // The fixed Aa/Exit buttons sit above the title instead of on it.
+    @media (max-width: 800px) { padding-top: 3.5rem; }
+  }
+  .center { max-width: 100%; min-width: 0; }
+  .page-header { position: static; box-shadow: none; padding: 0; &::before { display: none; } }
+  .center article { font-size: 1.05rem; line-height: 1.75; }
+  &[data-ps-size="-3"] .center article { font-size: 0.8rem; }
+  &[data-ps-size="-2"] .center article { font-size: 0.87rem; }
+  &[data-ps-size="-1"] .center article { font-size: 0.95rem; }
+  &[data-ps-size="1"] .center article { font-size: 1.16rem; line-height: 1.8; }
+  &[data-ps-size="2"] .center article { font-size: 1.28rem; line-height: 1.8; }
+  &[data-ps-size="3"] .center article { font-size: 1.42rem; line-height: 1.8; }
+}
+
+#ps-reader-panel {
+  position: fixed; top: 0.75rem; right: 0.75rem; z-index: 50;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem;
+  .ps-rd-top { display: flex; gap: 0.4rem; opacity: 0.55; transition: opacity 0.15s; }
+  &:hover .ps-rd-top, &:focus-within .ps-rd-top { opacity: 1; }
+  .ps-rd-btn, .ps-rd-opt {
+    font: inherit; font-size: 0.85rem; cursor: pointer; color: var(--darkgray);
+    background: var(--light); border: 1px solid var(--lightgray); border-radius: 6px; padding: 0.25rem 0.7rem;
+    &:hover { border-color: var(--secondary); }
+    &.on { background: var(--secondary); border-color: var(--secondary); color: var(--light); }
+  }
+  .ps-rd-opts {
+    background: var(--light); border: 1px solid var(--lightgray); border-radius: 8px;
+    padding: 0.6rem 0.75rem; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    display: flex; flex-direction: column; gap: 0.5rem;
+    &[hidden] { display: none; }
+  }
+  .ps-rd-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .ps-rd-label { font-size: 0.8rem; color: var(--gray); }
+  .ps-rd-group { display: flex; gap: 0.3rem; }
+  .ps-rd-opt { padding: 0.15rem 0.55rem; font-size: 0.8rem; &:disabled { opacity: 0.4; cursor: default; } }
+  .ps-rd-level { min-width: 2.4rem; }
+}
+
+// Sign in / Sign out link, added to the footer by personal.js.
+.ps-auth { display: inline-block; margin-top: 0.5rem; font-size: 0.85rem; }
