@@ -409,7 +409,7 @@ export function renderPage(
         </div>
         <script dangerouslySetInnerHTML={{ __html: autoDirScript }} />
         <script dangerouslySetInnerHTML={{ __html: learningPathsScript }} />
-        <script src="/static/reader-button.js" defer />
+        <script src="/static/personal.js" defer />
         <script src="/static/offline.js" defer />
         <script src="/static/lang.js" defer />
         <script src="/static/reader.js" defer />

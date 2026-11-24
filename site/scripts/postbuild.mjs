@@ -30,7 +30,7 @@ const sha = (h) => h.digest("hex")
 
 // Obsidian metadata and OS junk are not documents.
 const isDocument = (r) =>
-  !r.split("/").some((s) => s === ".obsidian" || s === ".git" || s === ".DS_Store")
+  !r.split("/").some((s) => s.startsWith("_") || s === ".obsidian" || s === ".git" || s === ".DS_Store")
 const docs = walk(contentDir)
   .map((p) => rel(contentDir, p))
   .filter(isDocument)
@@ -136,6 +136,10 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (url.origin !== location.origin) return
+
+  // Account endpoints are live Worker routes, never documents: without this, the navigation to
+  // /api/export would be answered with the cached 404 page.
+  if (url.pathname.startsWith("/api/") || url.pathname.startsWith("/auth/")) return
 
   // The documents: the installed copy first, so reading never waits on the network.
   event.respondWith((async () => {
