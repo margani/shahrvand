@@ -10,7 +10,7 @@
 ;(function () {
   var FA = /\.fa$/
   var KEY = "shahrvand.lang"
-  var FOLDERS = { paths: "مسیرها", foundations: "مبانی", institutions: "نهادها", rights: "حقوق" }
+  var FOLDERS = { paths: "مسیرها", foundations: "مبانی", institutions: "نهادها", rights: "حقوق", media: "سواد رسانه‌ای", economy: "اقتصاد سیاسی", world: "سیاست جهانی", history: "تاریخ" }
   // Interface strings Quartz renders in English. An unknown string is left as it is.
   var UI = {
     Explorer: "فهرست",
