@@ -11,6 +11,7 @@ configuration:
     - private
     - templates
     - _report.md
+    - _coverage.md
     - .obsidian
   theme:
     fontOrigin: googleFonts
